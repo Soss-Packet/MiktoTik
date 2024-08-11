@@ -4,17 +4,23 @@ Copy and paste the Snippet below each script name into your RouterOS Terminal to
 
 
 WAN_DHCP_To_Static.rsc:
-Applied the current DHCP IP as a static IP and turns off the DHCP Server (Great for DMZ)
+Applies the current DHCP IP as a static IP and turns off the DHCP Server (Great for DMZ)
 
 {/file remove [find type="script"];:local fileCount [/file find type="script"];/tool fetch mode=https url="https://raw.githubusercontent.com/Fax-God/MiktoTik/main/WAN_DHCP_To_Static.rsc" keep-result=yes dst-path="flash/WAN_DHCP_To_Static.rsc";:while (:[/file find type="script"] = $fileCount) do={:delay 5s};/import file-name="flash/WAN_DHCP_To_Static.rsc";/file remove [/file find name="flash/WAN_DHCP_To_Static.rsc"]}
 
 QOS_Print.rsc:
-Print QOS Variables
+Prints QOS Variables in Mbps
 
 {/file remove [find type="script"];:local fileCount [/file find type="script"];/tool fetch mode=https url="https://raw.githubusercontent.com/Fax-God/MiktoTik/main/QOS_Print.rsc" keep-result=yes dst-path="flash/QOS_Print.rsc";:while (:[/file find type="script"] = $fileCount) do={:delay 5s};/import file-name="flash/QOS_Print.rsc";/file remove [/file find name="flash/QOS_Print.rsc"]}
 
 Que-Tree-Rebuilder.rsc:
-Rebuild QOS Tree
+
+Interactive QOS Tree Builder.
+Deletes Existing Default Que Tree.
+Will ask you how many SIP Users you want to reserve bandwidth for.
+Then will ask upload and download speed.
+Will use all 3 variables to build and activate a new que tree.
+Then will print the QOS Variables in Mbps.
 
 {/file remove [find type="script"];:local fileCount [/file find type="script"];/tool fetch mode=https url="https://raw.githubusercontent.com/Fax-God/MiktoTik/main/Que-Tree-Rebuilder.rsc" keep-result=yes dst-path="flash/Que-Tree-Rebuilder.rsc";:while (:[/file find type="script"] = $fileCount) do={:delay 5s};/import file-name="flash/Que-Tree-Rebuilder.rsc";/file remove [/file find name="flash/Que-Tree-Rebuilder.rsc"]}
 
